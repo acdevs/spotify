@@ -1,0 +1,1246 @@
+<html>
+    <head>
+    <title>STAY (with Justin Bieber)</title>
+    <link rel="icon" href="logo.png" type="image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+        <style>
+            @font-face {
+                font-family: "Gotham-Bold";
+                src: url("Gotham-Bold.otf") format("opentype");
+                }
+            @font-face {
+                font-family: "GothamLight";
+                src: url("GothamLight.ttf") format("truetype");
+                }
+            @font-face {
+                font-family: "GothamMedium";
+                src: url("GothamMedium.ttf") format("truetype");
+                }
+            *{
+                user-select: none;
+                box-sizing:border-box;
+                cursor: default;
+                }
+            body{
+                margin:0vw; 
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            #cover_full{
+                display: block;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: #fafafa;
+                z-index:30;
+            }
+            #icon_cover{
+                position: absolute;
+                width:100%;
+                font-size: 25vw;
+                top:50%;
+                margin-top: -15vw;
+                text-align: center;
+                color:#1DB954;
+            }
+            #text_cover{
+                position: absolute;
+                width:100%;
+                color:#1DB954;
+                font-size: 3vw;
+                font-family: 'Gotham-Bold';
+                bottom: 3vw;
+                text-align: center;
+                 
+            }
+            @media only screen  and (max-width: 600px){
+                #cover_full{
+                    display: none;
+                }
+                body{
+                margin:0vw; 
+                overflow-y: scroll;
+                }
+                
+                *a{
+                text-decoration:none;
+                }
+                ::-webkit-scrollbar {
+                display: none;
+                }
+                ::-webkit-scrollbar-thumb {
+                display: none;
+                }
+                *{text-decoration: none;outline:none;}
+                
+            /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                #nav{
+                    position: fixed;
+                    bottom:0;
+                    width:100%;
+                    height:16vw;
+                    background-color:#000;
+                    opacity: 0.85;
+
+                }
+                .tabs_but{
+                    position: relative;
+                    float: left;
+                    height:100%;
+                    width: 33.3333%;  
+                    color: #fff;
+                    text-align: center;
+                    font-family: 'GothamLight';
+                    font-size: 2.5vw
+                }
+                .tabs_but img{
+                    height: 45%;
+                    margin-top: 3.2vw;
+                }
+                
+                /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                #player{
+                    display: none;
+                    position: fixed;
+                    width:-webkit-fill-available;
+                    margin: 2vw;
+                    padding: 2vw;
+                    height: 16vw;
+                    background-color: rgb(36,56,67);
+                    border-radius: 2vw;
+                    bottom:15vw;
+                    animation-duration: 0.5s;
+                    transition-property:  transform;
+                    transition-duration: 0.1s;
+                    transition-timing-function: ease-in;
+                }
+                @keyframes upShow{
+                    from{
+                        transform: translateY(100vw);
+                        opacity: 0;
+                    }
+                    to{
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                #player img{
+                    position: relative;
+                    margin-right: 2vw;
+                    padding: 0vw;
+                    height: 12vw;
+                    border-radius: 1vw;
+                    float: left;
+                }
+                #song_name{
+                    color:#fff;
+                    font-family: 'GothamLight';
+                    font-weight:bold;
+                    margin-top:1.8vw;
+                    font-size: 4vw;
+                }
+                #album_name{
+                    font-family: 'GothamLight';
+                    color:#fff;
+                    margin-top: 1vw;
+                    font-size: 3.5vw;
+                    opacity: 0.5;
+                }
+                .button_player{
+                    position: relative;
+                    margin: 3vw;
+                    margin-top: -6.8vw;
+                    font-size: 5.5vw;
+                    float: right;
+                }
+                #like_button_player{
+                    animation-duration: 0.5s;
+                    color: #1DB954;}
+                #action_play_button_player{
+                    text-shadow: 0vw 0vw 1vw #212121;
+                    color: #ffffff;}
+
+                #song_seek_player{
+                    -webkit-appearance: none;
+                    width: -webkit-fill-available;
+                    height: 0.5vw;
+                    margin: 1.5vw 0.5vw 0 0.5vw;
+                }
+                #song_seek_player::-webkit-progress-bar{
+                    background-color: #1f1f1f;
+
+                }
+                #song_seek_player::-webkit-progress-value{
+                    background-color: #fafafa;
+                    
+                /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                }
+                #home{
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    background-image: linear-gradient(165deg, rgb(60,18,125), #000 10% );
+                    color:#fff;
+                }
+
+                #title{
+                    position: relative;
+                    width: 100%;
+                    padding: 0 3vw;
+                    margin:6vw 0vw 5vw 0vw; 
+                    font-family: 'Gotham-Bold';
+                    font-size: 7vw;
+                }
+                #home #title i{
+                    position: relative;
+                    margin: 0vw 0 0 5vw;
+                    float: right;
+                    font-size: 8vw;
+                }
+                .panel{
+                    position: relative;
+                    width: 100%;
+                    height:67vw;
+                    padding:0vw 3vw;
+                    margin: 2vw 0vw;
+                    font-size: 7vw;
+                    font-family:'Gotham-Bold';
+                    font-weight: bold;
+                }
+                #subtitle_panel{
+                    height:58vw;
+                }
+                .panel_quic_selc{
+                    position: relative;
+                    height:15vw;
+                    width: 44.6vw;
+                    margin:1.2vw 1.2vw ;
+                    float:left;
+                    padding-left: 17.5vw;
+                    padding-top: 6vw;
+                    font-size: 3.5vw;
+                    font-weight: bolder;
+                    font-family:"GothamLight";
+                    background-color: #121212;
+                    border-radius: 1vw;
+                    opacity: 0.95;
+                    
+                }
+                .panel_quic_selc img{
+                    position: absolute;
+                    height: 100%;
+                    left:0;
+                    top:0;
+                    float: left;
+                    border-bottom-left-radius: 1vw; 
+                    border-top-left-radius: 1vw; 
+                }
+                .swipe_parent{
+                    width: 100%;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                }
+                .swipes{
+                    width:220vw;
+                    margin:3vw 1vw 0vw 1vw;
+                }
+                .swipes div{
+                    width: 40vw;
+                    font-family: "GothamLight";
+                    font-size: 3vw;
+                    margin-right: 4vw;
+                    float: left;
+                    color: #dadada;
+                }
+                .swipes div img{
+                    width: 40vw;
+                    margin-bottom: 2vw;
+                }
+                
+                #artists_panel .swipes div{
+                    text-align: center;
+                    font-family: 'Gotham-Bold';
+                    font-size: 3.5vw;
+                    margin-right: 4vw;
+                    margin-top: 3vw;
+                }
+                #artists_panel .swipes div img{
+                    border-radius: 50%;
+                    margin-bottom: 3vw;
+                }
+                /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                #player_fullscreen{
+                    display: none;
+                    position: fixed;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background: linear-gradient(rgb(36,56,67),#000 80%);
+                    overflow: scroll;
+                    z-index: 4;
+                    animation-duration: 0.3s;
+                }
+                @keyframes popup{
+                    from {
+                        transform: translateY(100%);
+                    }
+                    to{
+                        transform: translateY(0);
+                    }
+                }
+                @keyframes popdown{
+                    from {
+                        transform: translateY(0);
+                    }
+                    to{
+                        transform: translateY(100%);
+                    }
+                }
+                table{
+                    color: #fff;
+                    font-size:3vw;
+                    font-family: 'GothamLight';
+                    padding:0;
+                }
+                table i{
+                    padding:5vw;
+                }
+                #cover{
+                    position: relative;
+                    width: 86vw;
+                    margin: 10vw 0vw;
+                    margin-left:-43%;
+                    left:50%;
+                }
+                #controls{
+                    position: relative;
+                    width:86vw;
+                    margin-top: 5vw;
+                    margin-left:-43%;
+                    left:50%;
+                    color: #fafafa;
+                    font-family: 'GothamLight';
+                }
+                #song_name_player{
+                    font-size: 5.5vw;
+                    font-weight: bold;
+                    
+                }
+                #album_name_player{
+                    font-size: 3.8vw;
+                    margin-top: 2vw;
+                    opacity: 0.7;
+                }
+                #like_button{
+                    font-size: 6vw;
+                    position: relative;
+                    float: right;
+                    margin-right: 0;
+                    top:-4vw;
+                    color:#1DB954;
+                    animation-duration: 0.5s;
+                }
+                @keyframes liked{
+                    50%{
+                        transform: scale(0.9);
+                    }
+                    60%{
+                        transform: scale(1.1);
+                    }
+                    100%{
+                        transform: scale(1);
+                    }
+                }
+                @keyframes disliked{
+                    10%{
+                        transform: rotateZ(-5deg);
+                    }
+                    40%{
+                        transform: rotateZ(5deg);
+                    }
+                    50%{
+                        transform: rotateZ(0deg);
+                    }
+                }
+                input[type='range'] {
+                  appearance: none;
+                  margin: 8vw 0 0 0;
+                  width: 100%;
+                  border-radius:0.5vw ;
+                }
+                input[type='range']::-webkit-slider-runnable-track {
+                    appearance: none;
+                    background: #e33d44;
+                    pointer-events: none;
+                    height: 0.5vw;
+                    background: #fafafa;
+                    border-radius:0.5vw;
+                }
+                input[type='range']::-webkit-slider-thumb {
+                  appearance: none;
+                  margin-top:-1vw;
+                  height: 2.5vw;
+                  width: 2.5vw;
+                  border-radius: 50%;
+                  background: #ffffff;
+                }
+                input[type='range']:active::-webkit-slider-thumb {
+                  margin-top:-1.2vw;
+                  height: 3vw;
+                  width: 3vw;
+                }
+                
+                .seetimes{
+                    margin:2vw 0 0 0;
+                    font-family: 'Gotham-Bold';
+                    font-size: 3.5vw;
+                    position: relative;
+                    opacity: 0.8;
+                }
+                #currenttime{
+                    float: left;
+                }
+                #endtime{
+                    float: right;
+                }
+                #controls table{
+                    width: 86vw;
+                    margin: 0vw;
+                }
+                #controls table i{
+                    margin: 0vw;
+                    padding:1vw 0vw;
+                    font-size: 6vw;
+                }
+                #controls .bigger{
+                    font-size:12vw; 
+                }
+                #controls td[align=center] i{
+                    font-size:22vw; 
+                }
+                #lyrics{
+                    position: relative;
+                    width:86vw;
+                    height:110vw;
+                    margin-left:-43%;
+                    left:50%;
+                    background-color: #1f767c;
+                    margin-top: 10vw;
+                    margin-bottom: 8vw;
+                    border:3vw solid #1f767c;
+                    border-top:15vw solid #1f767c;
+                    border-bottom:10vw solid #1f767c;
+                    border-radius: 2vw;
+                    padding:2vw 2vw 1vw 2vw ;
+                    color:#fff;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+                #head{
+                    position: relative;
+                    width:86vw;
+                    margin-left:-38%;
+                    top: 20vw;
+                    left:50%;
+                    font-family: 'Gotham-Bold';
+                    letter-spacing: 0.5vw;
+                    font-size: 3vw;
+                    color:#fafafa; 
+                    z-index: 1;
+                }
+                
+                #content_lyrics{
+                    color:#121212;
+                    width:-webkit-fill-available;
+                    font-family:'Gotham-Bold';
+                    font-size: 6vw;
+                    word-wrap: break-word;
+                    line-height: 7.5vw;
+                }
+                
+                /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                #search{
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    background-color: #000 ;
+                    color:#fff;
+                    padding: 0 3vw;
+                    font-size: 5vw;
+                    font-family: 'Gotham-Bold';
+                }
+
+                #search_head{
+                    position: relative;
+                    width: 100%;
+                    margin-top:16vw; 
+                    font-size: 8vw;
+                    font-family: 'Gotham-Bold';
+                }
+                #search_head i{
+                    position: absolute;
+                    top:50%;
+                    margin-top: -2.7vw;
+                    margin-left: -6.5vw;
+                    margin:;
+                    color:#000;
+                    font-size: 7vw;
+                }
+                #search_bait{
+                    position: relative;
+                    width: -webkit-fill-available;
+                    background-color: #fafafa;
+                    margin: 8vw 0vw 8vw 0vw;
+                    border-radius: 2vw;
+                    padding-left:10vw;
+                }
+                #search_head input{
+                    position: relative;
+                    width: -webkit-fill-available;
+                    background-color: #fafafa;
+                    color: #000;
+                    margin:0 2vw 0 0;
+                    border-radius: 5vw;
+                    padding: 5vw 3vw 5vw 3vw;
+                    font-size: 3.5vw;
+                    font-family:'GothamMedium';
+                    font-weight: bold;
+                    outline: none;
+                    border:none;
+                    box-shadow: none;
+                }
+                #search_head input::placeholder{
+                    color: #000;
+                }
+                
+                #search .panels div{
+                    display: block;
+                    height:20vw;
+                    width: 43vw;
+                    margin:2vw;
+                    float: left;
+                    padding-left: 5vw;
+                    padding-top: 5vw;
+                    font-size: 5vw;
+                    background-color: #111;
+                    border-radius: 1vw;
+                    opacity: 0.95;
+                }
+                #search .label{
+                    display: block;
+                    margin: 3vw 0vw;
+                }
+                #panel_s_1{
+                    height: 50vw;
+                    
+                }
+                #panel_s_2{
+                    height: 25vw;
+                    
+                }
+                #panel_s_3{
+                    height: 280vw;
+                    
+                }
+                /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */
+                
+                #cover_loader{
+                    display: block;
+                    position: fixed;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #000;
+                    z-index:10;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                #icon_loader{
+                    position: relative;
+                    font-size: 50vw;
+                    top:50%;
+                    left:50%;
+                    margin: -25vw 0 0 -22vw;
+                    color: #1DB954;
+                    animation-duration: 0.5s;
+                    animation-timing-function: ease-in-out;
+                    }
+                @keyframes blowup{
+                    to{
+                        transform: scale(3);
+                        opacity: 0;
+                    }
+                }
+                
+              /* :::::::::::::::::::::::::::::::::::::::::::::::::::: */  
+                #library{
+                    display: none;
+                    position: fixed;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #000;
+                    color:#fff;
+                    font-family: 'GothamLight';
+                    font-size: 3vw;
+                }
+                #title img{
+                    position: relative;
+                    width:10vw;
+                    margin:0 2vw 0 0;
+                    vertical-align:middle;
+                    border-radius: 50%;
+                }
+                #library #title i{
+                    position: relative;
+                    margin: 1vw 0 0 5vw;
+                    float: right;
+                    font-size: 8vw;
+                }
+                
+                #subs_sec{
+                    position: relative;
+                    width: 100%;
+                    padding: 0 1vw;
+                    margin:6vw 1vw 5vw 2vw; 
+                    font-size: 4vw;
+                    font-family: 'GothamLight';
+                }
+                #subs_sec span{
+                    padding:2vw 3vw;
+                    margin-right: 1vw;
+                    border:0.5px solid #fafafa;
+                    border-radius: 8vw;
+                }
+                #library table{
+                    margin:1vw 2vw 0vw 2vw;
+                    width: -webkit-fill-available;
+                }
+                #library table td{
+                    padding: 1vw;
+                    font-size: 4.5vw;
+                    font-weight: 900;
+                    text-align: left;
+                    vertical-align: middle;
+                }
+                #library table tr td img{
+                    width:16vw;
+                }
+                #library table tr td i{
+                    font-size: 6vw;
+                }
+                #f_add{
+                    background-color: #515151;
+                    border-radius: 50%;
+                }
+                #s_add{
+                    background-color: #515151;
+                }
+                
+                #likePop{
+                    display: block;
+                    position: fixed;
+                    z-index: 20;
+                    margin: 2vw;
+                    width: -webkit-fill-available;
+                    padding:4vw 3vw;
+                    bottom:15vw;
+                    background-color: #fafafa;
+                    font-family: 'Gotham-Bold';
+                    font-size: 3.5vw;
+                    border-radius: 1.5vw;
+                    transition-property:  transform;
+                    transition-duration: 0.1s;
+                    transition-timing-function: ease-in;
+                    transform: translateY(30vw);
+                }
+                
+                #offline_notification{
+                    display: none;
+                    z-index: 1;
+                    position: absolute;
+                    width: -webkit-fill-available;
+                    text-align: center;
+                    padding:2vw 0vw;
+                    left:0;
+                    top :-8vw;
+                    background-color: #121212;
+                    color: #fafafa;
+                    font-family: 'GothamLight';
+                    font-weight: 800;
+                    font-size: 3vw;
+                    border-radius: 2vw;
+                    transition-property:  transform;
+                    transition-duration: 0.1s;
+                    transition-timing-function: ease-in;
+                }
+            }
+        </style>
+        
+        <script>
+            function checkConnection(){
+                var notification = document.getElementById('offline_notification');
+                if( !(window.navigator.onLine) ){
+                    notification.style.display = 'block';
+                }
+            }
+
+            function notifyOffline(){
+                var notification = document.getElementById('offline_notification');
+                notification.style.display = 'block';
+            }
+            function notifyOnline(){
+                var notification = document.getElementById('offline_notification');
+                notification.style.display = 'none';
+            }
+
+            function setSalute(){
+                let time = new Date().getHours();
+                let text;
+                if ( time < 12 && time > 3) {
+                    text = "Good morning";
+                }
+                else if ( time < 18) {
+                    text = "Good afternoon";
+                }
+                else {
+                    text = "Good evening";
+                }
+                if( !(window.navigator.onLine) ){
+                    text = "You're Offline!"
+                }
+                document.getElementById('salutation').innerHTML=text;
+            }
+            function lodeStop() {
+                var loader_page=document.getElementById("cover_loader");
+                var loader_icon=document.getElementById("icon_loader");
+                loader_icon.style.animationName = 'blowup';
+                setTimeout(function(){
+                    loader_page.style.display = 'none';
+                }, 500)
+                }
+            
+            function openTab(evt, tabName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabs");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tabs_but");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(tabName).style.display = "block";
+                  evt.currentTarget.className += " active";
+                }
+            
+            
+            function popUp(){
+                const pop=document.getElementById('player_fullscreen');
+                var mt=document.getElementsByTagName('meta')[1];
+                mt.content='#243843';
+                var lyrics = document.getElementById('lyrics');
+                pop.style.display='block';
+                pop.style.animationName='popup';
+                
+                lyrics.focus();
+            }
+            function popDown(){
+                const pop=document.getElementById('player_fullscreen');
+                var mt=document.getElementsByTagName('meta')[1];
+                mt.content='#000000';
+                pop.style.animationName='popdown';
+                setTimeout(function(){
+                    pop.style.display='none';
+                } , 250);
+            }
+            var activeSong=false;
+            function checkPlay(){
+                var playerP = document.getElementById('playerPlay');
+                var playerFP = document.getElementById('playerFullPlay');
+                var seekP = document.getElementById('song_seek_player');
+                var seekFP = document.getElementById('seek');
+                var song = document.getElementById('song');
+                if (activeSong == false){
+                    activeSong = true;
+                    song.play();
+                    playerP.className = 'fa fa-pause';
+                    playerFP.innerHTML = 'pause_circle_filled';
+                    setInterval(function(){
+                        var setT=song.currentTime;
+                        seekP.value=setT;
+                        seekFP.value=setT;
+                    },1000);
+                }
+                else{
+                    activeSong = false;
+                    song.pause();
+                    playerP.className = 'fa fa-play';
+                    playerFP.innerHTML = 'play_circle_filled'
+                }
+            }
+            function seekSong(value){
+                var song = document.getElementById('song');
+                song.currentTime = value;
+            }
+            
+            var liked = true;
+            function checkLiked(){
+                var likes = document.getElementsByClassName("likes");
+                var slurp = document.getElementById('likePop');
+                var pop = document.getElementById('player');
+                if (liked == true){
+                    liked = false;
+                    for (i = 0; i < likes.length; i++) {
+                    likes[i].className = 'fa fa-heart-o likes';
+                    likes[i].style.color = '#fafafa';
+                  }
+                    slurp.innerHTML = 'Removed from Liked Songs.';
+                    slurp.style.display = "block";
+                    slurp.style.transform = 'translateY(0)';
+                    pop.style.transform = 'translateY(-13vw)';
+                    setTimeout(function(){
+                        slurp.style.transform = 'translateY(150vw)';
+                        pop.style.transform = 'translateY(0)';
+                    },2500);                    
+                }
+                else{
+                    liked = true;
+                    for (i = 0; i < likes.length; i++) {
+                    likes[i].className = 'fa fa-heart likes';
+                    likes[i].style.color = '#1DB954';
+                    }
+                    slurp.innerHTML = 'Added to Liked Songs.';
+                    slurp.style.display = "block";
+                    slurp.style.transform = 'translateY(0)';
+                    pop.style.transform = 'translateY(-13vw)';
+                    setTimeout(function(){
+                        slurp.style.transform = 'translateY(150vw)';
+                        pop.style.transform = 'translateY(0)';
+                    },2500);
+                }
+            }
+            
+            function animate_like(button){
+                if( liked ){
+                    animate_name = 'liked';
+                }else{
+                    animate_name = 'disliked';
+                }
+                button.style.animationName = animate_name;
+                setTimeout(function(){
+                    button.style.animationName = '';
+                }, 500);
+            }
+            
+            function popShow(){
+                var pop = document.getElementById('player');
+                setTimeout(function(){
+                    pop.style.display = "block";
+                    pop.style.animationName = "upShow";
+                },2000)
+            }
+            
+            
+            /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+            
+            function lyrics(song) { 
+                var t=song.currentTime;
+                var lyrics = document.getElementById('lyrics');
+                var text = document.getElementById('content_lyrics');
+                var updateTimer = document.getElementById('currenttime');
+                var m,s;
+                if(Math.round(t%60) < 10){
+                    s = '0'+ Math.round(t%60);
+                }
+                else{
+                    s = Math.round(t%60);
+                }
+                m = Math.trunc(t/60);
+                updateTimer.innerHTML = m+':'+s;
+                text.style.color='#121212';
+                if( t < 30.5 ){
+                    document.getElementById('l0').style.color='#fafafa'}
+                else if( t < 33.5 ){
+                    document.getElementById('l1').style.color='#fafafa'}
+                else if( t < 36.5 ){
+                    document.getElementById('l2').style.color='#fafafa'}
+                else if( t < 39.0 ){
+                    document.getElementById('l3').style.color='#fafafa'}
+                else if( t < 42.2 ){
+                    document.getElementById('l4').style.color='#fafafa'}
+                else if( t < 45.2 ){
+                    document.getElementById('l5').style.color='#fafafa'}
+                else if( t < 48.0 ){
+                    document.getElementById('l6').style.color='#fafafa'}
+                else if( t < 50.5 ){
+                    document.getElementById('l7').style.color='#fafafa'}
+                else if( t < 53.5 ){
+                    document.getElementById('l8').style.color='#fafafa'}
+                else if( t < 56.0 ){
+                    document.getElementById('l9').style.color='#fafafa'}
+                else if( t < 58.5 ){
+                    document.getElementById('l10').style.color='#fafafa'}
+                else if( t < 62.0 ){
+                    document.getElementById('l11').style.color='#fafafa'}
+                else if( t < 64.0 ){
+                    document.getElementById('l12').style.color='#fafafa'}
+                else if( t < 67.5 ){
+                    document.getElementById('l13').style.color='#fafafa'}
+                else if( t < 70.4 ){
+                    document.getElementById('l14').style.color='#fafafa'}
+                else if( t < 73.0 ){
+                    document.getElementById('l15').style.color='#fafafa'}
+                else if( t < 75.0 ){
+                    document.getElementById('l16').style.color='#fafafa'}
+                else if( t < 78.0 ){
+                    document.getElementById('l17').style.color='#fafafa'}
+                else if( t < 81.6 ){
+                    document.getElementById('l18').style.color='#fafafa'}
+                else if( t < 84.0 ){
+                    document.getElementById('l19').style.color='#fafafa'}
+                else if( t < 87.0 ){
+                    document.getElementById('l20').style.color='#fafafa'}
+                else if( t < 90.0 ){
+                    document.getElementById('l21').style.color='#fafafa'}
+                else if( t < 93.2 ){
+                    document.getElementById('l22').style.color='#fafafa'}
+                else if( t < 96.0 ){
+                    document.getElementById('l23').style.color='#fafafa'}
+                else if( t < 98.9 ){
+                    document.getElementById('l24').style.color='#fafafa'}
+                else if( t < 101.5 ){
+                    document.getElementById('l25').style.color='#fafafa'}
+                else if( t < 104.3 ){
+                    document.getElementById('l26').style.color='#fafafa'}
+                else if( t < 107.7 ){
+                    document.getElementById('l27').style.color='#fafafa'}
+                else if( t < 109.8 ){
+                    document.getElementById('l28').style.color='#fafafa'}
+                else if( t < 112.3 ){
+                    document.getElementById('l29').style.color='#fafafa'}
+                else if( t < 115.2 ){
+                    document.getElementById('l30').style.color='#fafafa'}
+                else if( t < 118.2 ){
+                    document.getElementById('l31').style.color='#fafafa'}
+                else if( t < 121.3 ){
+                    document.getElementById('l32').style.color='#fafafa'}
+                else if( t < 124.0 ){
+                    document.getElementById('l33').style.color='#fafafa'}
+                else if( t < 126.9 ){
+                    document.getElementById('l34').style.color='#fafafa'}
+                else if( t < 128.5 ){
+                    document.getElementById('l35').style.color='#fafafa'}
+                else if( t < 132.3 ){
+                    document.getElementById('l36').style.color='#fafafa'}
+                else if( t < 135.3 ){
+                    document.getElementById('l37').style.color='#fafafa'}
+                else if( t < 137.8 ){
+                    document.getElementById('l38').style.color='#fafafa'}
+                else if( t < 140.0 ){
+                    document.getElementById('l39').style.color='#fafafa'}
+                else if( t < 148.5 ){
+                    document.getElementById('l40').style.color='#fafafa'}
+                else if( t < 152.0 ){
+                    document.getElementById('l41').style.color='#fafafa'}
+                else if( t < 155.0 ){
+                    document.getElementById('l42').style.color='#fafafa'}
+                else{
+                    document.getElementById('l43').style.color='#fafafa'}
+            }
+            
+            
+        </script>
+    </head>
+    <body onload="checkConnection();lodeStop();setSalute();popShow();" onoffline="notifyOffline();" ononline="notifyOnline();">
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        <div id='cover_full'>
+            <div id='icon_cover'><i class='fa fa-spotify'></i></div>
+            <div id='text_cover'>SPOTIFY</div>
+        </div>
+        <div id='cover_loader'>
+            <i class='fa fa-spotify' id='icon_loader'></i>
+        </div>
+        
+       
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        
+        <div id='home' class='tabs'>
+            <div id='title'><div style='display: inline;' id='salutation'></div>
+            <i class="material-icons">settings</i>
+            <i class="material-icons">restore</i>
+            <i class="material-icons" style="margin-left: 0vw;">notifications_none</i>
+            </div>
+            <div id='subtitle_panel' class='panel'>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://misc.scdn.co/liked-songs/liked-songs-300.png'>Liked Songs
+            </div>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://i.scdn.co/image/ab6761610000e5ebe74b7398634a741f74858dc7'>Alessia Cara
+            </div>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36'>Justin Bieber
+            </div>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://i.pinimg.com/474x/f3/77/87/f37787dab83272540b31a8b566455e7e.jpg'>Daily Mix
+            </div>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://i.pinimg.com/474x/7b/e4/ca/7be4cae13f29c55863d4ccbfedb56c95.jpg'>Romance Hits
+            </div>
+            <div class='panel_quic_selc'>
+            <img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eba5205abffd84341e5bace828'>Selena Gomez
+            </div>
+            </div>
+            
+            <div id='radio_panel' class='panel' >
+            Recommended Radio
+                <div class='swipe_parent'>
+                <div class='swipes'>
+                    <div><img draggable='false' src='https://seeded-session-images.scdn.co/v1/img/artist/7o7doCwqft91WC690aglWC/en'>Yasser Desai, Tulsi Kumar, Tanisk Bagchi...</div>
+                    <div><img draggable='false' src='https://seeded-session-images.scdn.co/v1/img/artist/09UmIX92EUH9hAK4bxvHx6/en'>Pritam, Tulsi Kumar, Shreya Ghosal, Atif Aslam...</div>
+                    <div><img draggable='false' src='https://seeded-session-images.scdn.co/v1/img/artist/1wRPtKGflJrBx9BmLsSwlU/en'>Pritam, Neha, Arijit Singh, Atif Aslam...</div>
+                     <div><img draggable='false' src='https://seeded-session-images.scdn.co/v1/img/artist/06HL4z0CvFAxyc27GXpf02/en'>Taylor Swift, Selena Gomez, Ariana Grande...</div>
+                     <div><img draggable='false' src='https://seeded-session-images.scdn.co/v1/img/artist/74KM79TiuVKeVCqs8QtB0B/en'>Sabrina Carpenter, Dove Cameron, Naomi Scott, Bella...</div>
+                    
+                </div>
+                </div>
+            </div>
+            
+            <div id='artists_panel' class='panel' >
+            Your favourite artists
+                <div class='swipe_parent'>
+                <div class='swipes'>
+                    <div><img draggable='false' src='https://i.scdn.co/image/ab6761610000e5ebe74b7398634a741f74858dc7'>Alessia Cara</div>
+                    <div><img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eb26dbdbdacda5c30dc95e0c2c'>Taylor Swift</div>
+                    <div><img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36'>Justin Bieber</div>
+                     <div><img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eba5205abffd84341e5bace828'>Selena Gomez</div>
+                     <div><img draggable='false' src='https://i.scdn.co/image/ab6761610000e5eb51c67b8546e3e3f4d4ac103e'>Naomi Scott</div>
+                    
+                </div>
+                </div>
+            </div>
+             <div id='hits_panel' class='panel' >
+             Today's Biggest Hits
+                <div class='swipe_parent'>
+                <div class='swipes'>
+                    <div><img draggable='false' src='https://newjams-images.scdn.co/v3/discover-weekly/WDG5hekfW143zt9075soHHSPfvIsiMoWGwQfHgKmhhLruju7VqhlcNVHJsa4cemctSlBA5vaoJo75zcsxcZIevsEcYNXAXGcUdwLKHDtDCBxepuZrIyddl8RApcHJqMjYvGwWbDIIZQDEkBtp4OZXYvG-pOXx8e6dZRejH_yd-nK_bnf84yhQ0zFO6i2lwbRdlliakjUyM22TNMF9pGLQQ==/NzQ6OTM6NDBUNzAtMjAtMQ==/default'>Weeks top hits served right at your desk...</div>
+                    <div><img draggable='false' src='https://i.scdn.co/image/ab67616d0000b273ff09f9b9cb728fbf040a179e'>All time radio hits for you...</div>
+                    <div><img draggable='false' src='https://i.scdn.co/image/ab67706f00000003fe9dc05d01471e1917d46c6b'>Listen again..</div>
+                     <div><img draggable='false' src='https://lineup-images.scdn.co/your-top-songs-2019_LARGE-en.jpg'>Take back memories...</div>
+                     <div><img draggable='false' src='https://images-cdn.9gag.com/photo/aA39vzd_700b.jpg'>Mood Busters for your happy mood...</div>
+                    
+                </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br>
+        </div>
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        
+        <div id='search' class='tabs'>
+            <div id='search_head'>Search
+            <div id='search_bait'><i class="material-icons">search</i> <input type='search' placeholder="Artists, songs, or podcasts"></div>
+            </div>
+            <div class='label'>Your top genres</div>
+            <div class='panels' id="panel_s_1">
+                <div style='background-color: rebeccapurple'>Pop</div>
+                <div style='background-color:brown'>Bollywood</div>
+                <div style='background-color:midnightblue'>Folk&<br>Acoustic</div>
+                <div style='background-color:deeppink'>Dance/<br>Electronic</div>
+            </div>
+            <div class='label'>Popular podcast categories</div>
+            <div class='panels' id="panel_s_2">
+                <div style='background-color:blueviolet'>Educational</div>
+                <div style='background-color:red'>True Crime</div>
+            </div>
+            <div class='label'>Browse all</div>
+            <div class='panels' id="panel_s_3">
+                <div style='background-color:orangered'>Podcasts</div>
+                <div style='background-color:midnightblue'>Made for you</div>
+                <div style='background-color:hotpink'>Charts</div>
+                <div style='background-color:deeppink'>New<br>Releases</div>
+                <div style='background-color:darkmagenta'>Radio</div>
+                <div style='background-color:magenta'>Discover</div>
+                <div style='background-color:darkslateblue'>Concerts</div>
+                <div style='background-color:midnightblue'>COVID-19<br>Guide</div>
+                <div style='background-color:sandybrown'>Romance</div>
+                <div style='background-color:rosybrown'>Devotional</div>
+                <div style='background-color:saddlebrown'>Decades</div>
+                <div style='background-color:forestgreen'>Hip Hop</div>
+                <div style='background-color:springgreen'>Party</div>
+                <div style='background-color:skyblue'>Chill</div>
+                <div style='background-color:rebeccapurple'>Mood</div>
+                <div style='background-color:sandybrown'>Wellness</div>
+                <div style='background-color:darkslategray'>Workout</div>
+                <div style='background-color:midnightblue'>Sleep</div>
+                <div style='background-color:indianred'>Rock</div>
+                <div style='background-color:hotpink'>R&B</div>
+            </div>
+                
+        </div>
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        
+        <div id='library' class='tabs'>
+        <div id='title'><img draggable='false' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Eo_circle_green_white_letter-a.svg/1024px-Eo_circle_green_white_letter-a.svg.png'>Your Library
+            <i class="material-icons">add</i>
+            <i class="material-icons">search</i>
+            </div>
+            <div id='subs_sec'>
+                <span>Playlists</span>
+                <span>Artists</span>
+                <span>Albums</span>
+            </div>
+            <hr noshade size=1 width='100%' color='#212121'>
+            <div style='font-size: 4vw;color:#fff;margin:4vw 0 0 4vw;font-family:"GothamMedium";'>Recently Played</div>
+            <table>
+                <tr><td width='50'><img draggable='false' src='https://misc.scdn.co/liked-songs/liked-songs-300.png'></td><td>Liked Songs<br><div style='font-size: 3vw;color:#aaa;'><i class="material-icons" style='font-size: 3vw;margin: -4vw;color:#1DB954;'>push_pin</i>Playlist &#8226; 329 songs</div></td></tr>
+                <tr><td width='50'><i class="material-icons" id='f_add'>add</i></td><td>Add artists</td></tr>
+                <tr><td width='50'><i class="material-icons" id='s_add'>add</i></td><td>Add podcasts & shows</td></tr>
+            </table>
+        </div>
+        
+        <div id='likePop'>
+            Removed from liked songs
+        </div>
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+        <div id='player'>
+            <div id='offline_notification'>
+                No Internet connection available
+            </div>
+            <span onclick="popUp()">
+            <img draggable='false' src='https://lite-images-i.scdn.co/image/ab67616d0000b27341e31d6ea1d493dd77933ee5'>
+            <div id='song_name'>STAY (with Justin Bieber)</div>
+            <div id='album_name'>The Kid LAROI</div>
+            </span>
+            <div id='action_play_button_player' class="button_player" onclick="checkPlay()"><i class='fa fa-play' id='playerPlay' ></i></div>
+            <div id='like_button_player' class="button_player" onclick="checkLiked()"><i class='fa fa-heart likes' ></i></div>
+            <progress id="song_seek_player" value="0" max="158"></progress>
+         </div>
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        
+        <div id='nav'>
+            <div id='home_but' class='tabs_but' onclick="openTab(event, 'home')"><img draggable='false' src='home.png'><br>Home</div>
+            <div id='search_but' class='tabs_but' onclick="openTab(event, 'search')"><img draggable='false' src='search.png'><br>Search</div>
+            <div id='library_but' class='tabs_but' onclick="openTab(event, 'library')"><img draggable='false' src='lib.png'><br>Your Library</div>
+        </div>
+        
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+        
+        <div id='player_fullscreen'>
+            <table width='100%' cellpadding=0 cellspacing=0 border=0>
+                <tr>
+                    <td align='left' onclick='popDown()'><i class="material-icons">expand_more</i></td>
+                    <td align='center'>PLAYING FROM YOUR LIBRARY<br><b>Liked Songs</b></td>
+                    <td align='right'><i class="material-icons">more_vert</i></td>
+                </tr>
+            </table>
+            <img draggable='false' src='https://lite-images-i.scdn.co/image/ab67616d0000b27341e31d6ea1d493dd77933ee5' id='cover'>
+            <div id='controls'>
+                <div id='song_name_player'>STAY (with Justin Bieber)</div>
+                <div id='album_name_player'>The Kid LAROI, Justin Bieber</div>
+                <div id='like_button' class="button_player" onclick="checkLiked();animate_like(this)"><i class='fa fa-heart likes'></i></div>
+                
+                <input type='range' id='seek' min=0 max=158 value=0 oninput="seekSong(this.value)">
+                <div class='seetimes' id='currenttime'>0:00</div>
+                <div class='seetimes' id='endtime'>2:38</div>
+                
+                <table cellpadding=0 cellspacing=0 border=0>
+                <tr>
+                    <td align='left'><i class="material-icons">repeat</i></td>
+                    <td align='right'><i class="material-icons bigger">skip_previous</i></td>
+                    <td align='center' ><i class="material-icons bigger" id='playerFullPlay' onclick="checkPlay()">play_circle_filled</i></td>
+                    <td align='left'><i class="material-icons bigger">skip_next</i></td>
+                    <td align='right'><i class="material-icons">shuffle</i></td>
+                </tr>
+            </table>    
+            </div>
+            <div id='head'>LYRICS</div>
+            <div id='lyrics'>
+                <div id='content_lyrics'>
+                    <span id='l43'><span id='l42'><span id='l41'>
+                    <span id='l40'><span id='l39'><span id='l38'><span id='l37'>
+                    <span id='l36'><span id='l35'><span id='l34'><span id='l33'>
+                    <span id='l32'><span id='l31'><span id='l30'><span id='l29'>
+                    <span id='l28'><span id='l27'><span id='l26'><span id='l25'>
+                    <span id='l24'><span id='l23'><span id='l22'><span id='l21'>
+                    <span id='l20'><span id='l19'><span id='l18'><span id='l17'>
+                    <span id='l16'><span id='l15'><span id='l14'><span id='l13'>
+                    <span id='l12'><span id='l11'><span id='l10'><span id='l9'>
+                    <span id='l8'><span id='l7' ><span id='l6' ><span id='l5' >
+                    <span id='l4' ><span id='l3' ><span id='l2' ><span id='l1' >
+                    <span id='l0' ><i class="material-icons">music_note</i></span>
+                    <br>I do the same thing I told you that I never would</span>
+                    <br>I told you I'd change, even when I knew I never could</span>
+                    <br>Know that I can't find nobody else as good as you</span>
+                    <br>I need you to stay, need you to stay, hey (oh)</span>
+                    <br>
+                    <br>I get drunk, wake up, I'm wasted still</span>
+                    <br>I realize the time that I wasted here</span>
+                    <br>I feel like you can't feel the way I feel</span>
+                    <br>Oh, I'll be fucked up if you can't be right here</span>
+                    <br>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh, I'll be fucked up if you can't be right here</span>
+                    <br>
+                    <br>I do the same thing I told you that I never would</span>
+                    <br>I told you I'd change, even when I knew I never could</span>
+                    <br>Know that I can't find nobody else as good as you</span>
+                    <br>I need you to stay, need you to stay, hey</span>
+                    <br>I do the same thing I told you that I never would</span>
+                    <br>I told you I'd change even when I knew I never could</span>
+                    <br>Know that I can't find nobody else as good as you</span>
+                    <br>I need you to stay, need you to stay, hey</span>
+                    <br>
+                    <br>When I'm away from you, I miss your touch (ooh-ooh)</span>
+                    <br>You're the reason I believe in love.</span>
+                    <br>It's been difficult for me to trust (ooh-ooh)</span>
+                    <br>And I'm afraid that I'ma fuck it up</span>
+                    <br>Ain't no way that I can leave you stranded</span>
+                    <br>'Cause you ain't ever left me empty-handed</span>
+                    <br>And you know that I know that I can't live without you</span>
+                    <br>So, baby, stay</span>
+                    <br>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)</span>
+                    <br>Oh, I'll be fucked up if you can't be right here</span>
+                    <br>
+                    <br>I do the same thing I told you that I never would</span>
+                    <br>I told you I'd change, even when I knew I never could</span>
+                    <br>Know that I can't find nobody else as good as you</span>
+                    <br>I need you to stay, need you to stay, hey</span>
+                    <br>I do the same thing I told you that I never would</span>
+                    <br>I told you I'd change even when I knew I never could</span>
+                    <br>Know that I can't find nobody else as good as you</span>
+                    <br>I need you to stay, need you to stay, hey
+                    <br>
+                    <br><i class="material-icons">music_note</i></span>
+                    <br>
+                    <br>Oh-oh-oh</span>
+                    <br>I need you to stay, need you to stay, hey</span>
+                    <br>
+                    <br>Musixmatch.</span>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        <div id='now_playing'>
+            <audio src='https://docs.google.com/uc?export=download&id=1J3XSOGvWd7uq6r0yppZjtKzsBdHbJV4B' controls='false' style='display: none' id='song' ontimeupdate="lyrics(this)" onended="checkPlay()"></audio>
+        </div>
+        
+         
+        <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+    </body>
+</html>
