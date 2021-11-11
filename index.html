@@ -684,6 +684,26 @@
         </style>
         
         <script>
+            if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: 'STAY (With Justin Bieber)',
+    artist: 'The Kid LAROI',
+    album: 'STAY',
+    artwork: [
+      { src: 'https://lite-images-i.scdn.co/image/ab67616d0000b27341e31d6ea1d493dd77933ee5' },
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', function() {
+      var song = document.getElementById('song');
+      song.play();
+  });
+  navigator.mediaSession.setActionHandler('pause', function() {
+      var song = document.getElementById('song');
+      song.pause();
+  });
+}
+
             function checkConnection(){
                 var notification = document.getElementById('offline_notification');
                 if( !(window.navigator.onLine) ){
