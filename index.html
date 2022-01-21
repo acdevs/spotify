@@ -244,10 +244,14 @@
                     width: 100%;
                     overflow-x: scroll;
                     overflow-y: hidden;
+                    scroll-snap-type: x mandatory;
                 }
                 .swipes{
                     width:220vw;
                     margin:3vw 1vw 0vw 1vw;
+                    scroll-margin: 0;
+				    scroll-snap-align: start;
+				    scroll-snap-stop: normal;
                 }
                 .swipes div{
                     width: 40vw;
